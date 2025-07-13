@@ -7,6 +7,12 @@ import PlazzoSet from './PlazzoSet';
 import CottonTop from './CottonTop';
 import DigitalTop from './DigitalTop';
 import WesternTop from './WesternTop';
+import TShirt from './TShirt';
+import MaxiTops from './MaxiTops';
+import Jeggings from './Jeggings';
+import Leggings from './Leggings';
+import NightWear from './NightWear';
+import Nighty from './Nighty';
 // import KurtiMaxi from './KurtiMaxi';
 // import UmbrellaFrocks from './UmbrellaFrocks';
 
@@ -17,7 +23,13 @@ const categoryComponents = {
   'Plazzo Set' : <PlazzoSet />,
   'Cotton Top': <CottonTop />,
   'Digital Top': <DigitalTop />,
-  'Western Top': <WesternTop />
+  'Western Top': <WesternTop />,
+  'TShirt': <TShirt />,
+  'Maxi': <MaxiTops />,
+  'Jeggings': <Jeggings />,
+  'Leggings': <Leggings />,
+  'Night Wear': <NightWear/>,
+  'Nighty' : <Nighty />,
   // 'Kurti Maxi': <KurtiMaxi />,
   // 'Umbrella Frocks': <UmbrellaFrocks />,
 };

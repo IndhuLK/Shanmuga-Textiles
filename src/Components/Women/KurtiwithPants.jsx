@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import FilterSidebar from './FilterSidebar';
-import Img3 from "../../assets/HomeImg/Img-3.jpg";
-import Img2 from "../../assets/HomeImg/Img-3.jpg";
+import { Link } from "react-router-dom";
+
 import PreviouslyExplored from './PreviouslyExplored';
 import Maxi1 from "../../assets/Kurtiwith-Pant/IMG_1157.jpg"
 import Maxi2 from "../../assets/Kurtiwith-Pant/IMG_1158.jpg"
@@ -24,9 +24,9 @@ const KurtiwithPants = () => {
     discount: null,
   });
 
-  const allProducts = [
+  const kurtipant = [
     {
-      id: 1 ,
+      id: 46 ,
       title: "Women's Maxi Wear",
       price: 1500,
       oldPrice: 2600,
@@ -38,7 +38,7 @@ const KurtiwithPants = () => {
       discount: 30,
     },
     {
-      id: 2,
+      id: 47,
       title: "Elegant Blue Kurti",
       price: 1800,
       oldPrice: 2500,
@@ -50,7 +50,7 @@ const KurtiwithPants = () => {
       discount: 20,
     },
     {
-      id: 3,
+      id: 48,
       title: "Printed Floral Kurti",
       price: 1200,
       oldPrice: 2000,
@@ -62,7 +62,7 @@ const KurtiwithPants = () => {
       discount: 40,
     },
     {
-      id: 4,
+      id: 49,
       title: "Printed Floral Kurti",
       price: 1200,
       oldPrice: 2000,
@@ -74,7 +74,7 @@ const KurtiwithPants = () => {
       discount: 40,
     },
     {
-      id: 5,
+      id: 50,
       title: "Printed Floral Kurti",
       price: 1200,
       oldPrice: 2000,
@@ -86,7 +86,7 @@ const KurtiwithPants = () => {
       discount: 40,
     },
     {
-      id: 6,
+      id: 51,
       title: "Printed Floral Kurti",
       price: 1200,
       oldPrice: 2000,
@@ -98,7 +98,7 @@ const KurtiwithPants = () => {
       discount: 40,
     },
     {
-      id: 7,
+      id: 52,
       title: "Printed Floral Kurti",
       price: 1200,
       oldPrice: 2000,
@@ -110,7 +110,7 @@ const KurtiwithPants = () => {
       discount: 40,
     },
     {
-      id: 8,
+      id: 53,
       title: "Printed Floral Kurti",
       price: 1200,
       oldPrice: 2000,
@@ -122,7 +122,7 @@ const KurtiwithPants = () => {
       discount: 40,
     },
     {
-      id: 9,
+      id: 54,
       title: "Printed Floral Kurti",
       price: 1200,
       oldPrice: 2000,
@@ -134,7 +134,7 @@ const KurtiwithPants = () => {
       discount: 40,
     },
     {
-      id: 10,
+      id: 55,
       title: "Printed Floral Kurti",
       price: 1200,
       oldPrice: 2000,
@@ -147,7 +147,7 @@ const KurtiwithPants = () => {
     },
   ];
 
-  const filtered = allProducts.filter((p) => {
+  const filtered = kurtipant.filter((p) => {
     const priceMatch = filters.price
       ? p.price >= filters.price.min && p.price <= filters.price.max
       : true;
@@ -188,7 +188,8 @@ const KurtiwithPants = () => {
           {filtered.length > 0 ? (
             filtered.map((product) => (
               <div key={product.id} className="p-2">
-                <div className="bg-white w-[278px] mx-auto">
+                <Link to={`/productdetails/${product.id}`}>
+                <div className="bg-white w-[278px] mx-auto cursor-pointer">
                 <img
                   src={product.image}
                   alt={product.title}
@@ -204,6 +205,7 @@ const KurtiwithPants = () => {
                   ADD TO CART
                 </button>
                 </div>
+                </Link>
               </div>
             ))
           ) : (

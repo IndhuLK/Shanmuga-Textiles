@@ -26,6 +26,11 @@ const navItems = [
       { name: "Cotton Top", path: "/women/cotton-top" },
       { name: "Digital Top", path: "/women/digital-top" },
       { name: "Western Top", path: "/women/western-top" },
+      { name: "T-Shirt", path: "/women/t-shirt" },
+      { name: "Maxi", path: "/women/maxi-tops" },
+      { name: "Jeggings", path: "/women/jeggings" },
+      { name: "Night Wear", path: "/women/night-wear" },
+      { name: "Nighty", path: "/women/nighty" },
     ],
   },
   {
@@ -36,14 +41,23 @@ const navItems = [
   {
     name: "Kids Wear",
     path: "/kids",
-    submenu: [
-      { name: "Birthday Dresses", path: "/kids/birthday-dress" },
-      { name: "Umbrella Frocks", path: "/kids/umbrella-frocks" },
-      { name: "Pavadai sattai", path: "/kids/pavadai-sattai" },
-      { name: "Lehenga sets for kids", path: "/kids/lehenga-sets" },
-      { name: "Kurti and Chudi for Girls", path: "/kids/kurti-chudi" },
-      { name: "Night Wear", path: "/kids/night-wear" },
-    ],
+     sections: [
+      {
+        title: "Girl Kid",
+        items: [
+          { name: "Kid Frock", path: "/kids/kid-frock" },
+      { name: "Kid Cotton Top", path: "/kids/kid-cotton-top" },
+      { name: "Kid 3 Piece", path: "/kids/kid-3-piece" },
+      { name: "Kid Leggings", path: "/kids/kid-leggings" },
+        ],
+      },
+      {
+        title: "Boy Kid",
+        items: [
+          { name: "Shirt & Jean", path: "/kids/jean-shirt" },
+        ],
+      },
+      ],
   },
   {
     name: "Collections",
@@ -67,6 +81,7 @@ const navItems = [
   },
   { name: "Stitching Services", path: "/services" },
   { name: "Contact", path: "/contact" },
+  { name: "Dashboard", path: "/dashboard" },
 ];
 
 const NavbarLink = () => {
@@ -120,7 +135,11 @@ const NavbarLink = () => {
                 </Link>
               </div>
               {(item.submenu || item.sections) && (
-                <div className="absolute opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 top-full left-0 bg-white border border-green-600 shadow-lg rounded-md p-4 mt-2 min-w-[220px] z-50 before:content-[''] before:absolute before:top-[-8px] before:left-0 before:right-0 before:h-2 before:bg-transparent">
+                <div className="absolute opacity-0 invisible group-hover:opacity-100  
+                group-hover:visible transition-all duration-200 top-full left-0 bg-white border
+                 border-green-600 shadow-lg rounded-md p-4 mt-2 min-w-[220px] z-50 
+                 before:content-[''] before:absolute before:top-[-8px] before:left-0 before:right-0
+                  before:h-2 before:bg-transparent ">
                   {item.submenu && (
                     <ul className="space-y-1">
                       {item.submenu.map((sub, i) => (

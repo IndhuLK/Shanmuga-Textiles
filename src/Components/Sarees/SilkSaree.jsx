@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Img3 from "../../assets/HomeImg/Img-3.jpg";
-import Img2 from "../../assets/HomeImg/Img-3.jpg";
+import { Link } from "react-router-dom";
+
 import FilterSidebar from "../Women/FilterSidebar";
 import PreviouslyExplored from "../Women/PreviouslyExplored";
 import Img1221 from "/src/assets/Sarees/Saree/IMG_1221.jpg";
@@ -24,20 +24,20 @@ const SilkSaree = () => {
     discount: null,
   });
 
-  const allProducts = [
-    { id: 1, title: "Cotton Saree 1", image: Img1221, price: 899, category: "Cotton" },
-  { id: 2, title: "Cotton Saree 2", image: Img1224, price: 999, category: "Cotton" },
-  { id: 3, title: "Silk Saree 1", image: Img1227, price: 1499, category: "Silk" },
-  { id: 4, title: "Silk Saree 2", image: Img1230, price: 1399, category: "Silk" },
-  { id: 5, title: "Combo Saree 1", image: Img1233, price: 1599, category: "Combo" },
-  { id: 6, title: "Combo Saree 2", image: Img1236, price: 1499, category: "Combo" },
-  { id: 7, title: "Cotton Saree 3", image: Img1239, price: 999, category: "Cotton" },
-  { id: 8, title: "Silk Saree 3", image: Img1242, price: 1299, category: "Silk" },
-  { id: 9, title: "Cotton Saree 4", image: Img1245, price: 1099, category: "Cotton" },
-  { id: 10, title: "Combo Saree 3", image: Img1248, price: 1399, category: "Combo" },
+  const silksaree = [
+  { id: 21, title: "Vibrant Printed Cotton Saree", image: Img1221, price: 899, category: "Cotton" },
+  { id: 22, title: "Elegant Block Print Saree", image: Img1224, price: 999, category: "Cotton" },
+  { id: 23, title: "Pastel Shade Cotton Saree", image: Img1227, price: 1499, category: "Silk" },
+  { id: 24, title: "Geometric Pattern Cotton Saree", image: Img1230, price: 1399, category: "Silk" },
+  { id: 25, title: "Classic Plain Border Saree", image: Img1233, price: 1599, category: "Combo" },
+  { id: 26, title: "Dual Tone Cotton Saree", image: Img1236, price: 1499, category: "Combo" },
+  { id: 27, title: "Artistic Motif Cotton Saree", image: Img1239, price: 999, category: "Cotton" },
+  { id: 28, title: "Lightweight Daily Wear Saree", image: Img1242, price: 1299, category: "Silk" },
+  { id: 29, title: "Contemporary Design Cotton Saree", image: Img1245, price: 1099, category: "Cotton" },
+  { id: 30, title: "Traditional Weave Cotton Saree", image: Img1248, price: 1399, category: "Combo" },
   ];
 
-  const filtered = allProducts.filter((p) => {
+  const filtered = silksaree.filter((p) => {
     const priceMatch = filters.price
       ? p.price >= filters.price.min && p.price <= filters.price.max
       : true;
@@ -87,7 +87,8 @@ const SilkSaree = () => {
           {filtered.length > 0 ? (
             filtered.map((product) => (
               <div key={product.id} className="p-2">
-                <div className="bg-white w-[278px] mx-auto">
+                <Link to={`/productdetails/${product.id}`}>
+                <div className="bg-white w-[278px] mx-auto cursor-pointer">
                   <img
                     src={product.image}
                     alt={product.title}
@@ -111,6 +112,7 @@ const SilkSaree = () => {
                     ADD TO CART
                   </button>
                 </div>
+                </Link>
               </div>
             ))
           ) : (

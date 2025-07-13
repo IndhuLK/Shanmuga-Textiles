@@ -1,4 +1,4 @@
-import React from "react";
+
 import Lehenga from "/src/assets/StitchingService/LehengaImg.jpg";
 
 const SkirtMeasurment = ({ isOpen, onClose }) => {

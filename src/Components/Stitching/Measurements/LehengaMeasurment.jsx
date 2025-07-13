@@ -18,7 +18,7 @@ const LehengaMeasurment = ({ isOpen, onClose }) => {
 
         {/* Title */}
         <h2 className="text-center text-xl font-bold text-gray-800 mb-4">
-          Online Stitching Measurement Form
+          Lehenga Online Stitching Measurement Form
         </h2>
 
         <div className="grid md:grid-cols-2 gap-6">
@@ -160,7 +160,7 @@ const LehengaMeasurment = ({ isOpen, onClose }) => {
                     <label className="font-semibold mb-1 block">{left}</label>
                     <input
                       type="text"
-                       placeholder='14"'
+                      placeholder='14"'
                       className="w-full border rounded-md px-3 py-2"
                     />
                   </div>
@@ -168,7 +168,7 @@ const LehengaMeasurment = ({ isOpen, onClose }) => {
                     <label className="font-semibold mb-1 block">{right}</label>
                     <input
                       type="text"
-                       placeholder='14"'
+                      placeholder='14"'
                       className="w-full border rounded-md px-3 py-2"
                     />
                   </div>
@@ -178,8 +178,10 @@ const LehengaMeasurment = ({ isOpen, onClose }) => {
               {/* Dropdowns and File Upload */}
               <div>
                 <label className="font-semibold mb-1 block">Neck Design</label>
-                <select className="w-full border rounded-md px-3 py-2"
-                defaultValue="">
+                <select
+                  className="w-full border rounded-md px-3 py-2"
+                  defaultValue=""
+                >
                   <option value="" disabled>
                     -- Please Select --
                   </option>
@@ -214,7 +216,9 @@ const LehengaMeasurment = ({ isOpen, onClose }) => {
               </div>
               {/* Row 1 */}
               <div>
-                <label className="font-semibold mb-1 block">Shoulder Width</label>
+                <label className="font-semibold mb-1 block">
+                  Shoulder Width
+                </label>
                 <input
                   type="text"
                   placeholder="'14'"
@@ -222,9 +226,7 @@ const LehengaMeasurment = ({ isOpen, onClose }) => {
                 />
               </div>
               <div>
-                <label className="font-semibold mb-1 block">
-                  Hip(Lower)
-                </label>
+                <label className="font-semibold mb-1 block">Hip(Lower)</label>
                 <input
                   type="text"
                   placeholder="'14'"
@@ -234,28 +236,37 @@ const LehengaMeasurment = ({ isOpen, onClose }) => {
 
               {/*Row 2 */}
               <div>
-                <label className="font-semibold mb-1 block">Lehenga Length</label>
-                <input type="text"
-                 placeholder="'14'"
-                  className="w-full border rounded-md px-3 py-2" />
+                <label className="font-semibold mb-1 block">
+                  Lehenga Length
+                </label>
+                <input
+                  type="text"
+                  placeholder="'14'"
+                  className="w-full border rounded-md px-3 py-2"
+                />
               </div>
 
               {/* Special Instructions */}
-        <div className="sm:col-span-2">
-          <label className="font-semibold mb-1 block">Any Special Instructions?</label>
-          <textarea rows="3" placeholder="Type here..." className="w-full border rounded-md px-3 py-2"></textarea>
-        </div>
+              <div className="sm:col-span-2">
+                <label className="font-semibold mb-1 block">
+                  Any Special Instructions?
+                </label>
+                <textarea
+                  rows="3"
+                  placeholder="Type here..."
+                  className="w-full border rounded-md px-3 py-2"
+                ></textarea>
+              </div>
 
-        {/* Submit Button */}
-        <div className="sm:col-span-2">
-          <button
-            type="submit"
-            className="w-full bg-green-700 text-white font-semibold py-2 rounded hover:bg-green-800 transition"
-          >
-            Submit
-          </button>
-        </div>
-
+              {/* Submit Button */}
+              <div className="sm:col-span-2">
+                <button
+                  type="submit"
+                  className="w-full bg-green-700 text-white font-semibold py-2 rounded hover:bg-green-800 transition"
+                >
+                  Submit
+                </button>
+              </div>
             </form>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Img3 from "../../assets/HomeImg/Img-3.jpg";
-import Img2 from "../../assets/HomeImg/Img-3.jpg";
+import { Link } from "react-router-dom";
+
 import FilterSidebar from "../Women/FilterSidebar";
 import PreviouslyExplored from "../Women/PreviouslyExplored";
 import Img0724 from "../../assets/Blouse-Readymade/IMG_0724.jpg";
@@ -14,8 +14,6 @@ import Img0759 from "../../assets/Blouse-Readymade/IMG_0759.jpg";
 import Img0762 from "../../assets/Blouse-Readymade/IMG_0762.jpg";
 import Img0765 from "../../assets/Blouse-Readymade/IMG_0765.jpg";
 
-
-
 const Blouse = () => {
   const [filters, setFilters] = useState({
     price: null,
@@ -27,18 +25,78 @@ const Blouse = () => {
   });
 
   const blouseProducts = [
-  { id: 1, title: "Blouse 1", image: Img0724, price: 399, category: "Blouse", oldPrice: 500 },
-  { id: 2, title: "Blouse 4", image: Img0734, price: 549, category: "Blouse" },
-  { id: 3, title: "Blouse 6", image: Img0738, price: 399, category: "Blouse" },
-  { id: 4, title: "Blouse 8", image: Img0742, price: 449, category: "Blouse" },
-  { id: 5, title: "Blouse 10", image: Img0747, price: 449, category: "Blouse" },
-  { id: 6, title: "Blouse 12", image: Img0752, price: 399, category: "Blouse" },
-  { id: 7, title: "Blouse 14", image: Img0755, price: 499, category: "Blouse" },
-  { id: 8, title: "Blouse 16", image: Img0759, price: 499, category: "Blouse" },
-  { id: 9, title: "Blouse 18", image: Img0762, price: 449, category: "Blouse" },
-  { id: 10, title: "Blouse 20", image: Img0765, price: 449, category: "Blouse" },
-];
-
+    {
+      id: 1,
+      title: "Pink Readymade Blouse",
+      image: Img0724,
+      price: 399,
+      category: "Blouse",
+      oldPrice: 500,
+    },
+    {
+      id: 2,
+      title: "Red Readymade Blouse",
+      image: Img0734,
+      price: 549,
+      category: "Blouse",
+    },
+    {
+      id: 3,
+      title: "Elegant Blouse Design",
+      image: Img0738,
+      price: 399,
+      category: "Blouse",
+    },
+    {
+      id: 4,
+      title: "Silk Embroidered Blouse",
+      image: Img0742,
+      price: 449,
+      category: "Blouse",
+    },
+    {
+      id: 5,
+      title: "Cotton Daily Wear Blouse",
+      image: Img0747,
+      price: 449,
+      category: "Blouse",
+    },
+    {
+      id: 6,
+      title: "Mirror Work Blouse",
+      image: Img0752,
+      price: 399,
+      category: "Blouse",
+    },
+    {
+      id: 7,
+      title: "Traditional Zari Blouse",
+      image: Img0755,
+      price: 499,
+      category: "Blouse",
+    },
+    {
+      id: 8,
+      title: "Sleeveless Blouse",
+      image: Img0759,
+      price: 499,
+      category: "Blouse",
+    },
+    {
+      id: 9,
+      title: "Velvet Blouse",
+      image: Img0762,
+      price: 449,
+      category: "Blouse",
+    },
+    {
+      id: 10,
+      title: "Green Readymade Blouse",
+      image: Img0765,
+      price: 449,
+      category: "Blouse",
+    },
+  ];
 
   const filtered = blouseProducts.filter((p) => {
     const priceMatch = filters.price
@@ -90,30 +148,32 @@ const Blouse = () => {
           {filtered.length > 0 ? (
             filtered.map((product) => (
               <div key={product.id} className="p-2">
-                <div className="bg-white w-[278px] mx-auto">
-                  <img
-                    src={product.image}
-                    alt={product.title}
-                    className="w-[278px] h-[350px] object-cover rounded-[25px]"
-                  />
-                  <h3 className="font-sm md:text-md text-sm mt-4">
-                    {product.title}
-                  </h3>
-                  <div className="flex space-x-4">
-                    <div className="text-gray-900 mt-1 md:text-md text-sm">
-                      ₹{product.price}
+                <Link to={`/productdetails/${product.id}`}>
+                  <div className="bg-white w-[278px] mx-auto cursor-pointer">
+                    <img
+                      src={product.image}
+                      alt={product.title}
+                      className="w-[278px] h-[350px] object-cover rounded-[25px]"
+                    />
+                    <h3 className="font-sm md:text-md text-sm mt-4">
+                      {product.title}
+                    </h3>
+                    <div className="flex space-x-4">
+                      <div className="text-gray-900 mt-1 md:text-md text-sm">
+                        ₹{product.price}
+                      </div>
+                      <div className=" text-gray-500 mt-1 line-through flex md:text-md text-sm">
+                        ₹{product.oldPrice}
+                      </div>
                     </div>
-                    <div className=" text-gray-500 mt-1 line-through flex md:text-md text-sm">
-                      ₹{product.oldPrice}
-                    </div>
+                    <button
+                      className="mt-4 px-4 w-full py-2 border border-green-800 text-green-800 
+              rounded-full hover:bg-green-800 hover:text-white transition md:text-md text-sm"
+                    >
+                      ADD TO CART
+                    </button>
                   </div>
-                  <button
-                    className="mt-4 px-4 w-full py-2 border border-green-800 text-green-800 
-                rounded-full hover:bg-green-800 hover:text-white transition md:text-md text-sm"
-                  >
-                    ADD TO CART
-                  </button>
-                </div>
+                </Link>
               </div>
             ))
           ) : (

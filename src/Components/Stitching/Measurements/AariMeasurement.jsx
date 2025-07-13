@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+
 
 
 const AariMeasurement = ({ isOpen, onClose }) => {
@@ -19,7 +19,7 @@ const AariMeasurement = ({ isOpen, onClose }) => {
 
         {/* Title */}
         <h2 className="text-center text-xl font-bold text-gray-800 mb-4">
-          Online Stitching Measurement Form
+           Aari Work Online Stitching Measurement Form
         </h2>
 
         {/* Layout with Image + Form */}

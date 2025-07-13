@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import FilterSidebar from './FilterSidebar';
-import Img3 from "../../assets/HomeImg/Img-3.jpg";
-import Img2 from "../../assets/HomeImg/Img-3.jpg";
+import { Link } from "react-router-dom";
+
 import PreviouslyExplored from './PreviouslyExplored';
 import Bittu0805 from "../../assets/Bittukurti/IMG_0805.jpg"
 import Bittu0808 from "../../assets/Bittukurti/IMG_0808.jpg"
@@ -26,7 +26,7 @@ const BittuKurti = () => {
 
   const allProducts = [
     {
-      id: 1 ,
+      id: 56 ,
       title: "Women's Maxi Wear",
       price: 1500,
       oldPrice: 2600,
@@ -38,7 +38,7 @@ const BittuKurti = () => {
       discount: 30,
     },
     {
-      id: 2,
+      id: 57,
       title: "Elegant Blue Kurti",
       price: 1800,
       oldPrice: 2500,
@@ -50,7 +50,7 @@ const BittuKurti = () => {
       discount: 20,
     },
     {
-      id: 3,
+      id: 58,
       title: "Printed Floral Kurti",
       price: 1200,
       oldPrice: 2000,
@@ -62,7 +62,7 @@ const BittuKurti = () => {
       discount: 40,
     },
     {
-      id: 4,
+      id: 59,
       title: "Printed Floral Kurti",
       price: 1200,
       oldPrice: 2000,
@@ -74,7 +74,7 @@ const BittuKurti = () => {
       discount: 40,
     },
     {
-      id: 5,
+      id: 60,
       title: "Printed Floral Kurti",
       price: 1200,
       oldPrice: 2000,
@@ -86,7 +86,7 @@ const BittuKurti = () => {
       discount: 40,
     },
     {
-      id: 6,
+      id: 61,
       title: "Printed Floral Kurti",
       price: 1200,
       oldPrice: 2000,
@@ -98,7 +98,7 @@ const BittuKurti = () => {
       discount: 40,
     },
     {
-      id: 7,
+      id: 62,
       title: "Printed Floral Kurti",
       price: 1200,
       oldPrice: 2000,
@@ -110,7 +110,7 @@ const BittuKurti = () => {
       discount: 40,
     },
     {
-      id: 8,
+      id: 63,
       title: "Printed Floral Kurti",
       price: 1200,
       oldPrice: 2000,
@@ -122,7 +122,7 @@ const BittuKurti = () => {
       discount: 40,
     },
     {
-      id: 9,
+      id: 64,
       title: "Printed Floral Kurti",
       price: 1200,
       oldPrice: 2000,
@@ -134,7 +134,7 @@ const BittuKurti = () => {
       discount: 40,
     },
     {
-      id: 10,
+      id: 65,
       title: "Printed Floral Kurti",
       price: 1200,
       oldPrice: 2000,
@@ -145,6 +145,7 @@ const BittuKurti = () => {
       fabric: 'Rayon',
       discount: 40,
     },
+
   ];
 
   const filtered = allProducts.filter((p) => {
@@ -188,7 +189,8 @@ const BittuKurti = () => {
           {filtered.length > 0 ? (
             filtered.map((product) => (
               <div key={product.id} className="p-2">
-                <div className="bg-white w-[278px] mx-auto">
+                <Link to={`/productdetails/${product.id}`}>
+                <div className="bg-white w-[278px] mx-auto cursor-pointer">
                 <img
                   src={product.image}
                   alt={product.title}
@@ -204,6 +206,7 @@ const BittuKurti = () => {
                   ADD TO CART
                 </button>
                 </div>
+                </Link>
               </div>
             ))
           ) : (

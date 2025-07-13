@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Img3 from "../../assets/HomeImg/Img-3.jpg"; // These seem unused, consider removing if not used elsewhere
-import Img2 from "../../assets/HomeImg/Img-3.jpg"; // These seem unused, consider removing if not used elsewhere
+import { Link } from "react-router-dom";
+
 import FilterSidebar from '../Women/FilterSidebar';
 import PreviouslyExplored from '../Women/PreviouslyExplored';
 import Img1250 from "/src/assets/Sarees/SareeCombo/IMG_1250.jpg";
@@ -20,15 +20,15 @@ const SareeComboOffer = () => {
     discount: null,
   });
 
-  const allProducts = [
-    { id: 11, title: "Combo Saree 4", image: Img1250, price: 1799, category: "Combo" },
-    { id: 12, title: "Combo Saree 5", image: Img1251, price: 1899, category: "Combo" },
-    { id: 13, title: "Combo Saree 6", image: Img1252, price: 1599, category: "Combo" },
-    { id: 14, title: "Combo Saree 7", image: Img1253, price: 1699, category: "Combo" },
-    { id: 15, title: "Combo Saree 8", image: Img1254, price: 1899, category: "Combo" },
+  const combosaree = [
+    { id: 41, title: "Elegant Dual Combo Saree Pack", image: Img1250, price: 1799, category: "Combo" },
+    { id: 42, title: "Festive Wear Combo Sarees", image: Img1251, price: 1899, category: "Combo" },
+    { id: 43, title: "Daily Comfort Combo Saree Pack", image: Img1252, price: 1599, category: "Combo" },
+    { id: 44, title: "Printed Combo Saree Set", image: Img1253, price: 1699, category: "Combo" },
+    { id: 45, title: "Trendy Combo Sarees for Women", image: Img1254, price: 1899, category: "Combo" },
   ];
 
-  const filtered = allProducts.filter((p) => {
+  const filtered = combosaree.filter((p) => {
     const priceMatch = filters.price
       ? p.price >= filters.price.min && p.price <= filters.price.max
       : true;
@@ -65,15 +65,14 @@ const SareeComboOffer = () => {
           />
         </div>
 
-        {/* Products */}
-        {/* Changed grid-cols-1 to sm:grid-cols-2 for smaller mobiles, then lg:grid-cols-3 */}
-        {/* For very small screens, 1 column makes sense. For slightly larger phones, 2 columns might be okay. */}
+        
         <div className="col-span-1 md:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.length > 0 ? (
             filtered.map((product) => (
               <div key={product.id} className="p-2">
+                <Link to={`/productdetails/${product.id}`}>
                 {/* Removed fixed width, let the grid handle it */}
-                <div className="bg-white mx-auto"> {/* Removed w-[278px] */}
+                <div className="bg-white w-[278px] mx-auto cursor-pointer"> {/* Removed w-[278px] */}
                   <img
                     src={product.image}
                     alt={product.title}
@@ -90,6 +89,7 @@ const SareeComboOffer = () => {
                     ADD TO CART
                   </button>
                 </div>
+                </Link>
               </div>
             ))
           ) : (

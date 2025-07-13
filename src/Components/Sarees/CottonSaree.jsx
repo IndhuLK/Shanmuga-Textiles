@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Img3 from "../../assets/HomeImg/Img-3.jpg";
-import Img2 from "../../assets/HomeImg/Img-3.jpg";
+import { Link } from "react-router-dom";
+
 import FilterSidebar from '../Women/FilterSidebar';
 import PreviouslyExplored from '../Women/PreviouslyExplored';
 import Img1127 from "/src/assets/Sarees/CottonSaree/IMG_1127.jpg"
@@ -26,16 +26,16 @@ const CottonSaree = () => {
   });
 
   const allProducts = [
-    { id: 1, title: 'Cotton Saree 1', image: Img1127, price: 899, size: 'M', color: 'Red', sleeve: 'Half Sleeve', fabric: 'Cotton', discount: 10 },
-    { id: 2, title: 'Cotton Saree 2', image: Img1130, price: 999, size: 'L', color: 'Blue', sleeve: 'Full Sleeve', fabric: 'Cotton', discount: 15 },
-    { id: 3, title: 'Cotton Saree 2', image: Img1135, price: 999, size: 'L', color: 'Blue', sleeve: 'Full Sleeve', fabric: 'Cotton', discount: 15 },
-    { id: 4, title: 'Cotton Saree 2', image: Img1138, price: 999, size: 'L', color: 'Blue', sleeve: 'Full Sleeve', fabric: 'Cotton', discount: 15 },
-    { id: 5, title: 'Cotton Saree 2', image: Img1141, price: 999, size: 'L', color: 'Blue', sleeve: 'Full Sleeve', fabric: 'Cotton', discount: 15 },
-    { id: 6, title: 'Cotton Saree 2', image: Img1143, price: 999, size: 'L', color: 'Blue', sleeve: 'Full Sleeve', fabric: 'Cotton', discount: 15 },
-    { id: 7, title: 'Cotton Saree 2', image: Img1146, price: 999, size: 'L', color: 'Blue', sleeve: 'Full Sleeve', fabric: 'Cotton', discount: 15 },
-    { id: 8, title: 'Cotton Saree 2', image: Img1148, price: 999, size: 'L', color: 'Blue', sleeve: 'Full Sleeve', fabric: 'Cotton', discount: 15 },
-    { id: 9, title: 'Cotton Saree 2', image: Img1152, price: 999, size: 'L', color: 'Blue', sleeve: 'Full Sleeve', fabric: 'Cotton', discount: 15 },
-    { id: 10, title: 'Cotton Saree 2', image: Img1155, price: 999, size: 'L', color: 'Blue', sleeve: 'Full Sleeve', fabric: 'Cotton', discount: 15 },
+    { id: 11, title: 'Soft Cotton Saree', image: Img1127, price: 899, size: 'M', color: 'Red', sleeve: 'Half Sleeve', fabric: 'Cotton', discount: 10 },
+    { id: 12, title: 'Elegant Cotton Saree', image: Img1130, price: 999, size: 'L', color: 'Blue', sleeve: 'Full Sleeve', fabric: 'Cotton', discount: 15 },
+    { id: 13, title: 'Sky Blue Cotton Saree', image: Img1135, price: 999, size: 'L', color: 'Blue', sleeve: 'Full Sleeve', fabric: 'Cotton', discount: 15 },
+    { id: 14, title: 'Classic Grey Cotton Saree', image: Img1138, price: 999, size: 'L', color: 'Blue', sleeve: 'Full Sleeve', fabric: 'Cotton', discount: 15 },
+    { id: 15, title: 'Peach Soft Cotton Saree', image: Img1141, price: 999, size: 'L', color: 'Blue', sleeve: 'Full Sleeve', fabric: 'Cotton', discount: 15 },
+    { id: 16, title: 'Green Cotton Saree with Border', image: Img1143, price: 999, size: 'L', color: 'Blue', sleeve: 'Full Sleeve', fabric: 'Cotton', discount: 15 },
+    { id: 17, title: 'Purple Casual Cotton Saree"', image: Img1146, price: 999, size: 'L', color: 'Blue', sleeve: 'Full Sleeve', fabric: 'Cotton', discount: 15 },
+    { id: 18, title: 'Black Border Cotton Saree', image: Img1148, price: 999, size: 'L', color: 'Blue', sleeve: 'Full Sleeve', fabric: 'Cotton', discount: 15 },
+    { id: 19, title: 'Dual Tone Cotton Saree', image: Img1152, price: 999, size: 'L', color: 'Blue', sleeve: 'Full Sleeve', fabric: 'Cotton', discount: 15 },
+    { id: 20, title: 'Handloom Soft Cotton Saree', image: Img1155, price: 999, size: 'L', color: 'Blue', sleeve: 'Full Sleeve', fabric: 'Cotton', discount: 15 },
   ];
 
   const filtered = allProducts.filter((p) => {
@@ -79,7 +79,8 @@ const CottonSaree = () => {
           {filtered.length > 0 ? (
             filtered.map((product) => (
               <div key={product.id} className="p-2">
-                <div className="bg-white w-[278px] mx-auto">
+                <Link to={`/productdetails/${product.id}`}>
+                <div className="bg-white w-[278px] mx-auto cursor-pointer">
                 <img
                   src={product.image}
                   alt={product.title}
@@ -95,6 +96,7 @@ const CottonSaree = () => {
                   ADD TO CART
                 </button>
                 </div>
+                </Link>
               </div>
             ))
           ) : (

@@ -1,4 +1,4 @@
-import React from "react";
+
 import Lehenga from "/src/assets/StitchingService/LehengaImg.jpg";
 
 const ChudiMeasurment = ({ isOpen, onClose }) => {
@@ -18,7 +18,7 @@ const ChudiMeasurment = ({ isOpen, onClose }) => {
 
         {/* Title */}
         <h2 className="text-center text-xl font-bold text-gray-800 mb-4">
-          Online Stitching Measurement Form
+           Chudi Online Stitching Measurement Form
         </h2>
 
         <div className="grid md:grid-cols-2 gap-6">

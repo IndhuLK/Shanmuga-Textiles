@@ -1,29 +1,41 @@
-import React from 'react'
+import React from "react";
 import { FaSearch } from "react-icons/fa";
 import { FaRegUser } from "react-icons/fa6";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import Logo from '../../assets/HomeImg/Logo.png';
-import {  Search } from "lucide-react";
+import Logo from "../../assets/HomeImg/Logo.png";
+import { Search } from "lucide-react";
+import Marquee from "react-fast-marquee";
 
 const TopHeader = () => {
   return (
     <div className="w-full font-family">
       {/* Top banner */}
       <div className="bg-green-700 ">
-        <h1 className="text-white px-4 md:px-20 py-3 text-center text-sm md:text-base">
-          Elegant Wedding Collections for Women & Kids – Now with Special Discounts
-        </h1>
+        <Marquee
+          gradient={false}
+          speed={40}
+          pauseOnHover={true}
+          className="text-white text-base px-4 font-medium"
+        >
+          <p className="text-white px-4 md:px-20 py-3 text-center text-base">
+            Elegant Wedding Collections for Women & Kids – Now with Special
+            Discounts
+          </p>
+        </Marquee>
       </div>
 
       {/* Main section */}
       <div className="max-w-6xl mx-auto px-4 md:px-0 py-1 flex flex-col md:flex-row items-center justify-between gap-4">
-        
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <img src={Logo} alt="Logo" className="h-20 w-24" />
-          <p className="italic text-xl font-semibold bg-gradient-to-r from-[#32754c] 
-          to-[#2a469e] bg-clip-text text-transparent">Shree Shanmuga Textiles</p>
+          <img src={Logo} alt="Logo" className="h-24 w-28" />
+          <p
+            className="text-xl font-semibold bg-gradient-to-r from-[#32754c] 
+          to-[#2a469e] bg-clip-text text-transparent"
+          >
+            Shree Shanmuga Textiles
+          </p>
         </div>
 
         {/* Search */}
@@ -33,7 +45,10 @@ const TopHeader = () => {
             placeholder="Search products"
             className="w-full pl-10 pr-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-green-600"
           />
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+          <Search
+            className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+            size={18}
+          />
         </div>
 
         {/* Icons */}

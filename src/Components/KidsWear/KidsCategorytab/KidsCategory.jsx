@@ -1,13 +1,17 @@
 import React from 'react'
 import clsx from 'clsx';
+import KF0901 from "/src/assets/Kid-frock/IMG_0901.jpg";
+import KCT1187 from '/src/assets/Kid-CottonTop/IMG_1187.jpg';
+import K3P0867 from '/src/assets/Kid-3Piece/IMG_0867.jpg';
+import KL0886 from '/src/assets/Kid-liggines/IMG_0886.jpg';
+import BK1198 from '/src/assets/Boy-Kid/IMG_1198.jpg';
 
 const categories = [
-  { name: "Birthday Dresses", image: '/src/assets/HomeImg/img-3.jpg' },
-  { name: "Umbrella Frocks", image: '/images/kurti-maxi.jpg' },
-  { name: "Pavadai sattai", image: '/images/umbrella-frocks.jpg' },
-  { name: "Lehenga sets for kids", image: '/images/burkas-kaftans.jpg' },
-  { name: "Kurti and Chudi for Girls", image: '/images/western-tops.jpg' },
-  { name: "Night Wear", image: '/images/tshirts.jpg' },
+  { name: "Kid Frock", image: KF0901 },
+  { name: "Kid Cotton Top", image: KCT1187 },
+  { name: "Kid 3 Piece", image: K3P0867 },
+  { name: "Kid Leggings", image: KL0886 },
+  { name: "Boy Kid", image: BK1198 },
   
 ];
 

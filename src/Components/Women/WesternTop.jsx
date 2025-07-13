@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import FilterSidebar from './FilterSidebar';
-import Img3 from "../../assets/HomeImg/Img-3.jpg";
-import Img2 from "../../assets/HomeImg/Img-3.jpg";
 import PreviouslyExplored from './PreviouslyExplored';
-import CTop0850 from "/src/assets/Cotton-top/IMG_0850.jpg"
-import CTop0851 from "/src/assets/Cotton-top/IMG_0851.jpg"
-import CTop0852 from "/src/assets/Cotton-top/IMG_0852.jpg"
-import CTop0853 from "/src/assets/Cotton-top/IMG_0853.jpg"
-import CTop0854 from "/src/assets/Cotton-top/IMG_0854.jpg"
-import CTop0855 from "/src/assets/Cotton-top/IMG_0855.jpg"
-import CTop0856 from "/src/assets/Cotton-top/IMG_0856.jpg"
-import CTop0857 from "/src/assets/Cotton-top/IMG_0857.jpg"
-import CTop0858 from "/src/assets/Cotton-top/IMG_0858.jpg"
+import WTop1283 from "/src/assets/Western-Top/IMG_1283.jpg"
+import WTop1284 from "/src/assets/Western-Top/IMG_1284.jpg"
+import WTop1285 from "/src/assets/Western-Top/IMG_1285.jpg"
+import WTop1286 from "/src/assets/Western-Top/IMG_1286.jpg"
+import WTop1287 from "/src/assets/Western-Top/IMG_1287.jpg"
+import WTop1288 from "/src/assets/Western-Top/IMG_1288.jpg"
+import WTop1289 from "/src/assets/Western-Top/IMG_1289.jpg"
+import WTop1290 from "/src/assets/Western-Top/IMG_1290.jpg"
+import WTop1291 from "/src/assets/Western-Top/IMG_1291.jpg"
+import WTop1292 from "/src/assets/Western-Top/IMG_1292.jpg"
 
 
 const WesternTop = () => {
@@ -25,113 +24,125 @@ const WesternTop = () => {
   });
 
   const allProducts = [
-    {
-      id: 1 ,
-      title: "Women's Maxi Wear",
-      price: 1500,
-      oldPrice: 2600,
-      image: CTop0850,
+   {
+      id: 1,
+      title: "White Lace Western Top",
+      price: 950,
+      oldPrice: 1800,
+      image: WTop1283,
       size: 'M',
-      color: 'Red',
-      sleeve: 'Full Sleeve',
-      fabric: 'Cotton',
-      discount: 30,
+      color: 'White',
+      sleeve: 'Long Sleeve',
+      fabric: 'Lace',
+      discount: 47,
     },
     {
       id: 2,
-      title: "Elegant Blue Kurti",
-      price: 1800,
-      oldPrice: 2500,
-      image: CTop0851,
-      size: 'L',
-      color: 'Blue',
+      title: "Pink Frill Western Top",
+      price: 800,
+      oldPrice: 1500,
+      image: WTop1284,
+      size: 'S',
+      color: 'Pink',
       sleeve: 'Half Sleeve',
-      fabric: 'Silk',
-      discount: 20,
+      fabric: 'Georgette',
+      discount: 47,
     },
     {
       id: 3,
-      title: "Printed Floral Kurti",
-      price: 1200,
+      title: "Brown Knit Western Top",
+      price: 1100,
       oldPrice: 2000,
-      image: CTop0852,
-      size: 'S',
-      color: 'Green',
-      sleeve: 'Sleeveless',
-      fabric: 'Rayon',
-      discount: 40,
+      image: WTop1285,
+      size: 'L',
+      color: 'Brown',
+      sleeve: 'Full Sleeve',
+      fabric: 'Knit',
+      discount: 45,
     },
     {
       id: 4,
-      title: "Printed Floral Kurti",
-      price: 1200,
-      oldPrice: 2000,
-      image: CTop0853,
-      size: 'S',
-      color: 'Green',
-      sleeve: 'Sleeveless',
-      fabric: 'Rayon',
-      discount: 40,
+      title: "Striped Western Top",
+      price: 750,
+      oldPrice: 1400,
+      image: WTop1286,
+      size: 'M',
+      color: 'Black & White',
+      sleeve: 'Half Sleeve',
+      fabric: 'Cotton Blend',
+      discount: 46,
     },
     {
       id: 5,
-      title: "Printed Floral Kurti",
-      price: 1200,
-      oldPrice: 2000,
-      image: CTop0854,
+      title: "Light Blue Casual Top",
+      price: 600,
+      oldPrice: 1000,
+      image: WTop1287,
       size: 'S',
-      color: 'Green',
-      sleeve: 'Sleeveless',
-      fabric: 'Rayon',
+      color: 'Light Blue',
+      sleeve: 'Short Sleeve',
+      fabric: 'Cotton',
       discount: 40,
     },
     {
       id: 6,
-      title: "Printed Floral Kurti",
-      price: 1200,
-      oldPrice: 2000,
-      image: CTop0855,
-      size: 'S',
-      color: 'Green',
+      title: "Floral Yellow Western Top",
+      price: 1300,
+      oldPrice: 2200,
+      image: WTop1288,
+      size: 'L',
+      color: 'Yellow',
       sleeve: 'Sleeveless',
-      fabric: 'Rayon',
-      discount: 40,
+      fabric: 'Viscose',
+      discount: 41,
     },
     {
       id: 7,
-      title: "Printed Floral Kurti",
-      price: 1200,
-      oldPrice: 2000,
-      image: CTop0856,
-      size: 'S',
-      color: 'Green',
-      sleeve: 'Sleeveless',
-      fabric: 'Rayon',
-      discount: 40,
+      title: "Black & Beige Layered Top",
+      price: 1600,
+      oldPrice: 2800,
+      image: WTop1289,
+      size: 'M',
+      color: 'Black & Beige',
+      sleeve: 'Full Sleeve',
+      fabric: 'Polyester',
+      discount: 43,
     },
     {
       id: 8,
-      title: "Printed Floral Kurti",
-      price: 1200,
-      oldPrice: 2000,
-      image: CTop0857,
-      size: 'S',
-      color: 'Green',
+      title: "White Ruffled Dress/Top",
+      price: 1400,
+      oldPrice: 2500,
+      image: WTop1290,
+      size: 'L',
+      color: 'White',
       sleeve: 'Sleeveless',
-      fabric: 'Rayon',
-      discount: 40,
+      fabric: 'Cotton',
+      discount: 44,
     },
     {
       id: 9,
-      title: "Printed Floral Kurti",
-      price: 1200,
-      oldPrice: 2000,
-      image: CTop0858,
+      title: "White Floral Print Top",
+      price: 900,
+      oldPrice: 1600,
+      image: WTop1291,
       size: 'S',
-      color: 'Green',
-      sleeve: 'Sleeveless',
-      fabric: 'Rayon',
-      discount: 40,
+      color: 'White Multi',
+      sleeve: 'Half Sleeve',
+      fabric: 'Chiffon',
+      discount: 44,
+    },
+    {
+      id: 10,
+      title: "Abstract Print Blouse",
+      price: 1000,
+      oldPrice: 1900,
+      image: WTop1292,
+      size: 'M',
+      color: 'Multi-color',
+      sleeve: 'Short Sleeve',
+      fabric: 'Georgette',
+      discount: 47,
     },
     
   ];
