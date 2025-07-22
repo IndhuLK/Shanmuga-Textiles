@@ -15,7 +15,8 @@ const Footer = () => {
           alt="Logo"
           className="w-24 h-24 object-contain"
         />
-        <h2 className="italic text-xl font-semibold bg-gradient-to-r from-[#32754c] to-[#2a469e] bg-clip-text text-transparent"> Shree Shanmuga Textiles
+        <h2 className="italic text-xl font-semibold bg-gradient-to-r from-[#32754c] 
+        to-[#2a469e] bg-clip-text text-transparent"> Shri Shanmuga Textiles
         </h2>
       </div>
 

@@ -29,7 +29,7 @@ const FAQSection = () => {
   };
 
   return (
-    <div className="px-6 py-12 font-family">
+    <div className="px-6 py-12 font-family overflow-hidden">
       {/* Centered Title and Description */}
       <div className="text-center max-w-4xl mx-auto mb-10">
         <h1 className="text-2xl md:text-3xl text-green-800 font-bold mb-4">
@@ -78,6 +78,20 @@ const FAQSection = () => {
           />
         </div>
       </div>
+
+      {/*Map */}
+      <div className="mt-10 h-[60vh] rounded-2xl md:px-20">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.640447749886!2d78.68236971526349!3d10.801411192304402!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baaf50059c72bd1%3A0x3d202864f253393a!2sSHRI%20SHANMUGA%20TEXTILES!5e0!3m2!1sen!2sin!4v1721189560123!5m2!1sen!2sin"
+        width="100%"
+        height="100%"
+        allowFullScreen=""
+        loading="lazy"
+        style={{ border: 0 }}
+        referrerPolicy="no-referrer-when-downgrade"
+        className='rounded-2xl shadow-lg'
+      ></iframe>
+    </div>
     </div>
   );
 };

@@ -32,9 +32,9 @@ const TopHeader = () => {
           <img src={Logo} alt="Logo" className="h-24 w-28" />
           <p
             className="text-xl font-semibold bg-gradient-to-r from-[#32754c] 
-          to-[#2a469e] bg-clip-text text-transparent"
+          to-[#2a469e] bg-clip-text text-transparent italic"
           >
-            Shree Shanmuga Textiles
+            Shri Shanmuga Textiles
           </p>
         </div>
 

@@ -158,7 +158,7 @@ const Bestsell = () => {
       <div className="w-full px-10 py-10">
         <h2 className="text-xl font-semibold text-center mb-6 flex items-center justify-center gap-4">
           <span className="flex-1 h-px bg-gray-400 max-w-[100px]"></span>
-          <span>BEST OF SREE SHANMUGA</span>
+          <span>BEST OF SHRI SHANMUGA</span>
           <span className="flex-1 h-px bg-gray-400 max-w-[100px]"></span>
         </h2>
 

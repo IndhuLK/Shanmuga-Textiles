@@ -59,7 +59,13 @@ const navItems = [
       },
       ],
   },
-  {
+ 
+  { name: "Stitching Services", path: "/services" },
+  { name: "Contact", path: "/contact" },
+  { name: "Dashboard", path: "/dashboard" },
+];
+
+{/* {
     name: "Collections",
     path: "/collections",
     sections: [
@@ -78,11 +84,7 @@ const navItems = [
         ],
       },
     ],
-  },
-  { name: "Stitching Services", path: "/services" },
-  { name: "Contact", path: "/contact" },
-  { name: "Dashboard", path: "/dashboard" },
-];
+  },*/}
 
 const NavbarLink = () => {
   const location = useLocation();
@@ -118,7 +120,8 @@ const NavbarLink = () => {
           {navItems.map((item, index) => (
             <div key={index} className="relative group">
               <div
-                className={`flex items-center gap-1 text-sm font-medium px-4 py-2 cursor-pointer rounded transition-all duration-200 ${
+                className={`flex items-center gap-1 text-sm font-medium px-4 py-2 cursor-pointer 
+                  rounded transition-all duration-200 ${
                   activeItem === item.name
                     ? "bg-green-700 text-white"
                     : "text-gray-800 hover:text-green-700"
@@ -141,18 +144,24 @@ const NavbarLink = () => {
                  before:content-[''] before:absolute before:top-[-8px] before:left-0 before:right-0
                   before:h-2 before:bg-transparent ">
                   {item.submenu && (
-                    <ul className="space-y-1">
-                      {item.submenu.map((sub, i) => (
-                        <li key={i}>
-                          <Link
-                            to={sub.path}
-                            className="text-sm text-gray-700 hover:text-green-600 hover:bg-green-50 py-2 px-3 block rounded transition-colors duration-150"
-                          >
-                            {sub.name}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
+                    <ul
+  className={`gap-2 ${
+    item.name === "Women Wear"
+      ? "grid grid-cols-2 w-[400px]"
+      : "space-y-1"
+  }`}
+>
+  {item.submenu.map((sub, i) => (
+    <li key={i}>
+      <Link
+        to={sub.path}
+        className="text-sm text-gray-700 hover:text-green-600 hover:bg-green-50 py-2 px-3 block rounded transition-colors duration-150"
+      >
+        {sub.name}
+      </Link>
+    </li>
+  ))}
+</ul>
                   )}
                   {item.sections &&
                     item.sections.map((section, i) => (

@@ -1,6 +1,17 @@
 import React, { useState } from "react";
-import { FaTachometerAlt, FaBox, FaList, FaUser, FaStar, FaBars, FaTimes, FaComments, 
-    FaGift, FaChartBar, FaCog } from "react-icons/fa";
+import {
+  FaTachometerAlt,
+  FaBox,
+  FaList,
+  FaUser,
+  FaStar,
+  FaBars,
+  FaTimes,
+  FaComments,
+  FaGift,
+  FaChartBar,
+  FaCog,
+} from "react-icons/fa";
 
 const Sidebar = ({ active, setActive }) => {
   const [isOpen, setIsOpen] = useState(false); // State to manage sidebar open/close
@@ -12,18 +23,18 @@ const Sidebar = ({ active, setActive }) => {
     { name: "User Management", icon: FaUser },
     { name: "Reviews & Ratings Moderation", icon: FaStar },
     { name: "CMS", icon: FaComments }, // Using FaComments for CMS, you can change
-   
+    { name: "Slider", icon: FaComments },
   ];
 
   return (
     <>
-      {/* Mobile Hamburger Icon - Always at the top-right of the main content area */}
-      {/* This div should ideally be placed in your main App.js or layout component,
-          sibling to the content that the sidebar hides/reveals.
-          For this example, we're keeping it here for demonstration,
-          but note that its actual visual placement depends on your overall layout. */}
-      <div className="relative"> {/* Adjusted positioning */}
-        <button onClick={() => setIsOpen(true)} className="text-gray-700 p-2 rounded-md bg-white shadow-md md:hidden">
+      <div className="relative">
+        {" "}
+        {/* Adjusted positioning */}
+        <button
+          onClick={() => setIsOpen(true)}
+          className="text-gray-700 p-2 rounded-md bg-white shadow-md md:hidden"
+        >
           <FaBars size={24} />
         </button>
       </div>
@@ -49,8 +60,6 @@ const Sidebar = ({ active, setActive }) => {
             <FaTimes size={24} />
           </button>
         </div>
-
-
 
         {menu.map((item) => {
           const IconComponent = item.icon; // Get the actual icon component

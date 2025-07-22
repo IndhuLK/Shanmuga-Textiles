@@ -157,6 +157,7 @@ const ProductManagement = () => {
   const addPhotoBox = () => {
     setImages((prev) => [...prev, null]);
   };
+  const [selected, setSelected] = useState(null);
 
   if (showAddForm) {
     return (
@@ -185,11 +186,11 @@ const ProductManagement = () => {
           <div className="md:col-span-2 space-y-6">
             {/* Title */}
             <div>
-              <label className="font-medium">Product Title</label>
+              <label className="font-medium">Product Name</label>
               <input
                 type="text"
                 className="w-full mt-1 border px-3 py-2 rounded"
-                placeholder="Write title here"
+                placeholder="Write Name here"
               />
             </div>
 
@@ -276,7 +277,7 @@ const ProductManagement = () => {
               <div className="flex gap-4">
                 <input
                   type="text"
-                  placeholder="Regular Price"
+                  placeholder="Discount Price"
                   className="w-full border px-3 py-2 rounded"
                 />
                 <input
@@ -366,6 +367,27 @@ const ProductManagement = () => {
                   />
                 </div>
               ))}
+            </div>
+
+            {/*Stitching product */}
+
+            <div className="border border-green-200 p-4 rounded shadow-lg">
+              <h3 className="font-semibold mb-2">Stitching Product</h3>
+              <div className="flex gap-4">
+                {["Yes", "No"].map((option) => (
+                  <button
+                    key={option}
+                    onClick={() => setSelected(option)}
+                    className={`px-6 py-2 rounded border text-sm font-medium ${
+                      selected === option
+                        ? "bg-green-600 text-white border-green-700"
+                        : "bg-white text-gray-700 border-gray-300 hover:bg-gray-100"
+                    }`}
+                  >
+                    {option}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>
