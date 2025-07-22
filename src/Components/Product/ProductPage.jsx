@@ -12,6 +12,11 @@ import saree3 from '../../assets/Sarees/MysoreSilk/IMG_1257.jpg'
 import saree4 from '../../assets/Sarees/MysoreSilk/IMG_1258.jpg'
 import { Dialog } from "@headlessui/react";
 import { X } from "lucide-react";
+import { Button } from "/src/Components/ui/button";
+import { ShoppingCart } from "lucide-react";
+import { toast } from "../../hooks/use-toast";
+import { useCart } from "../../contexts/CartContext";
+import FloatingCart from "./FloatingCart";
 
 const ProductPage = () => {
   const [quantity, setQuantity] = useState(1);
@@ -61,6 +66,16 @@ const ProductPage = () => {
   const images = [saree1, saree2, saree3, saree4];
   const [selectedImage, setSelectedImage] = useState(images[0]);
   const [isOpen, setIsOpen] = useState(false);
+
+  const { addToCart } = useCart();
+
+  const handleAddToCart = (product) => {
+    addToCart(product);
+    toast({
+      title: "Added to cart",
+      description: `${product.title} has been added to your cart.`,
+    });
+  };
 
   return (
     <div>
@@ -140,9 +155,15 @@ const ProductPage = () => {
 
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-3">
-          <button className="bg-black text-white px-6 py-3 rounded font-semibold">
-            ADD TO CART
-          </button>
+          <Button className="w-full mt-3 flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-green-600 hover:bg-green-700 rounded"
+      onClick={(e) => {
+        e.preventDefault();
+        handleAddToCart(product);
+      }}
+    >
+      <ShoppingCart className="w-4 h-4 mr-2" />
+      Add to Cart
+          </Button >
           <button className="bg-green-700 text-white px-6 py-3 rounded font-semibold">
             BUY IT NOW
           </button>
@@ -472,6 +493,7 @@ const ProductPage = () => {
         </div>
       )}
     </div>
+    <FloatingCart />
     </div>
   );
 };

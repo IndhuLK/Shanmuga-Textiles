@@ -19,6 +19,8 @@ import {
   Pie,
   Cell,
 } from "recharts";
+import ProductForm from "./ProductForm";
+import { Button } from "@headlessui/react";
 
 // Sample Data
 const salesData = [
@@ -44,6 +46,8 @@ const buyerData = [
 const COLORS = ["#3b82f6", "#e5e7eb"];
 
 const DashboardContent = () => {
+    const [showForm, setShowForm] = useState(false);
+    const [editingProduct, setEditingProduct] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const ordersPerPage = 5;
 
@@ -94,14 +98,77 @@ const DashboardContent = () => {
   const currentOrders = orders.slice(indexOfFirstOrder, indexOfLastOrder);
   const totalPages = Math.ceil(orders.length / ordersPerPage);
 
+  const handleAddProduct = (data) => {
+  const newProduct = {
+    ...data,
+    id: Date.now().toString(),
+    rating: 0,
+    sales: 0,
+    image:
+      data.images && data.images.length > 0
+        ? data.images[0]
+        : "https://images.unsplash.com/photo-1560472355-536de3962603?w=400&h=400&fit=crop",
+  };
+
+  setProducts((prev) => [newProduct, ...prev]);
+  setShowForm(false);
+  toast({
+    title: "Product Added",
+    description: "New product has been successfully added.",
+  });
+  filterProducts();
+};
+
+const handleEditProduct = (data) => {
+  if (!editingProduct) return;
+
+  const updatedProduct = {
+    ...editingProduct,
+    ...data,
+    image:
+      data.images && data.images.length > 0
+        ? data.images[0]
+        : editingProduct.image,
+  };
+
+  setProducts((prev) =>
+    prev.map((p) => (p.id === editingProduct.id ? updatedProduct : p))
+  );
+  setEditingProduct(null);
+  setShowForm(false);
+  toast({
+    title: "Product Updated",
+    description: "Product has been successfully updated.",
+  });
+  filterProducts();
+};
+
+
+  if (showForm) {
+  return (
+    
+      <ProductForm
+        initialData={editingProduct || undefined}
+        onSubmit={editingProduct ? handleEditProduct : handleAddProduct}
+        onCancel={() => {
+          setShowForm(false);
+          setEditingProduct(null);
+        }}
+        isEditing={!!editingProduct}
+      />
+    
+  );
+}
+
   return (
     <div className="p-4">
       
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-2xl font-bold">Dash Board</h1>
-        <button className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800">
+        <Button onClick={() => setShowForm(true)}
+        className="bg-green-700 text-white px-4 py-2 rounded hover:bg-green-800">
           + Add Product
-        </button>
+        </Button>
       </div>
 
       {/* Cards */}
