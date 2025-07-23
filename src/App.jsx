@@ -45,6 +45,8 @@ import ProductDetails from "./Components/NavFoot/ProductDetails";
 import DashBoard from "./Components/Dashboard/DashBoard";
 import ProductPage from "./Components/Product/ProductPage";
 import { SliderProvider } from "./contexts/SliderContext";
+import { CartProvider } from "./contexts/CartContext";
+import { OrderProvider } from "./contexts/OrderContext";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -52,73 +54,77 @@ function App() {
   return (
     <>
       <SliderProvider>
-        <Router>
-          <Navbar />
-          <Routes>
-            <Route path="/productdetails/:id" element={<ProductDetails />} />
-            <Route path="/" element={<Home />} />
-            <Route path="/sarees" element={<SareesCol />} />
-            {/*Submenu */}
-            <Route path="/sarees/cotton-saree" element={<CottonSaree />} />
-            <Route
-              path="/sarees/Mysore-Silk-Cotton"
-              element={<MysoreCotton />}
-            />
-            <Route path="/sarees/silk-sarees" element={<SilkSaree />} />
-            <Route
-              path="/sarees/Saree-Combo-Offer"
-              element={<SareeComboOffer />}
-            />
+        <CartProvider>
+          <OrderProvider>
+          <Router>
+            <Navbar />
+            <Routes>
+              <Route path="/productdetails/:id" element={<ProductDetails />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/sarees" element={<SareesCol />} />
+              {/*Submenu */}
+              <Route path="/sarees/cotton-saree" element={<CottonSaree />} />
+              <Route
+                path="/sarees/Mysore-Silk-Cotton"
+                element={<MysoreCotton />}
+              />
+              <Route path="/sarees/silk-sarees" element={<SilkSaree />} />
+              <Route
+                path="/sarees/Saree-Combo-Offer"
+                element={<SareeComboOffer />}
+              />
 
-            <Route path="/women" element={<WomenWear />} />
-            {/*Submenu */}
-            <Route path="/women/kurtis" element={<KurtiwithPants />} />
-            <Route path="/women/kurti-maxi" element={<BittuKurti />} />
-            <Route
-              path="/women/kurti-reliance-brand"
-              element={<KurtiReliance />}
-            />
-            <Route path="/women/plazzo-set" element={<PlazzoSet />} />
-            <Route path="/women/cotton-top" element={<CottonTop />} />
-            <Route path="/women/digital-top" element={<DigitalTop />} />
-            <Route path="/women/western-top" element={<WesternTop />} />
-            <Route path="/women/t-shirt" element={<TShirt />} />
-            <Route path="/women/maxi-tops" element={<MaxiTops />} />
-            <Route path="/women/jeggings" element={<Jeggings />} />
-            <Route path="/women/night-wear" element={<NightWear />} />
-            <Route path="/women/nighty" element={<Nighty />} />
+              <Route path="/women" element={<WomenWear />} />
+              {/*Submenu */}
+              <Route path="/women/kurtis" element={<KurtiwithPants />} />
+              <Route path="/women/kurti-maxi" element={<BittuKurti />} />
+              <Route
+                path="/women/kurti-reliance-brand"
+                element={<KurtiReliance />}
+              />
+              <Route path="/women/plazzo-set" element={<PlazzoSet />} />
+              <Route path="/women/cotton-top" element={<CottonTop />} />
+              <Route path="/women/digital-top" element={<DigitalTop />} />
+              <Route path="/women/western-top" element={<WesternTop />} />
+              <Route path="/women/t-shirt" element={<TShirt />} />
+              <Route path="/women/maxi-tops" element={<MaxiTops />} />
+              <Route path="/women/jeggings" element={<Jeggings />} />
+              <Route path="/women/night-wear" element={<NightWear />} />
+              <Route path="/women/nighty" element={<Nighty />} />
 
-            <Route path="/services" element={<StitchingService />} />
-            {/*Stitching designs */}
-            <Route path="/aari-work" element={<AariWorkPage />} />
-            <Route path="/lehenga-stitching" element={<LehengaStitching />} />
-            <Route path="/chudi-stitching" element={<ChudiStitching />} />
-            <Route path="/umbrella-frock" element={<UmbrellaStitching />} />
-            <Route path="/choli-stitching" element={<CholiStitching />} />
-            <Route path="/skirt-and-top" element={<SkirtStitching />} />
+              <Route path="/services" element={<StitchingService />} />
+              {/*Stitching designs */}
+              <Route path="/aari-work" element={<AariWorkPage />} />
+              <Route path="/lehenga-stitching" element={<LehengaStitching />} />
+              <Route path="/chudi-stitching" element={<ChudiStitching />} />
+              <Route path="/umbrella-frock" element={<UmbrellaStitching />} />
+              <Route path="/choli-stitching" element={<CholiStitching />} />
+              <Route path="/skirt-and-top" element={<SkirtStitching />} />
 
-            <Route path="/blouse" element={<Blouse />} />
+              <Route path="/blouse" element={<Blouse />} />
 
-            <Route path="/kids" element={<Kids />} />
-            {/*Submenu */}
-            <Route path="/kids/kid-frock" element={<KidFrock />} />
-            <Route path="/kids/kid-cotton-top" element={<KidCottonTop />} />
-            <Route path="/kids/kid-3-piece" element={<KidPiece />} />
-            <Route path="/kids/kid-leggings" element={<KidLeggings />} />
-            <Route path="/kids/jean-shirt" element={<BoyKid />} />
+              <Route path="/kids" element={<Kids />} />
+              {/*Submenu */}
+              <Route path="/kids/kid-frock" element={<KidFrock />} />
+              <Route path="/kids/kid-cotton-top" element={<KidCottonTop />} />
+              <Route path="/kids/kid-3-piece" element={<KidPiece />} />
+              <Route path="/kids/kid-leggings" element={<KidLeggings />} />
+              <Route path="/kids/jean-shirt" element={<BoyKid />} />
 
-            <Route path="/collections" element={<CollectionsCombo />} />
-            {/*Submenu */}
-            <Route
-              path="/collections/mom-kid/combo-sets"
-              element={<MainTab />}
-            />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/dashboard" element={<DashBoard />} />
-            <Route path="/products" element={<ProductPage />} />
-          </Routes>
-          <Footer />
-        </Router>
+              <Route path="/collections" element={<CollectionsCombo />} />
+              {/*Submenu */}
+              <Route
+                path="/collections/mom-kid/combo-sets"
+                element={<MainTab />}
+              />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/dashboard" element={<DashBoard />} />
+              <Route path="/products" element={<ProductPage />} />
+            </Routes>
+            <Footer />
+          </Router>
+          </OrderProvider>
+        </CartProvider>
       </SliderProvider>
     </>
   );

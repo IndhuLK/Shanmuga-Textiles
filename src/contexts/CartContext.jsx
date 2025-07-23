@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 const CartContext = createContext(undefined);
 
@@ -12,25 +12,28 @@ export const useCart = () => {
 
 export const CartProvider = ({ children }) => {
   const [items, setItems] = useState([]);
+  const [isOpen, setIsOpen] = useState(false); // ✅ இதை add பண்ணனும்
 
   const addToCart = (product, quantity = 1) => {
-    setItems(prevItems => {
-      const existingItem = prevItems.find(item => item.id === product.id);
-      
+    setItems((prevItems) => {
+      const existingItem = prevItems.find((item) => item.id === product.id);
+
       if (existingItem) {
-        return prevItems.map(item =>
+        return prevItems.map((item) =>
           item.id === product.id
             ? { ...item, quantity: item.quantity + quantity }
             : item
         );
       }
-      
+
       return [...prevItems, { ...product, quantity }];
     });
+
+    setIsOpen(true); // ✅ cart add ஆனதும் popup open செய்யலாம்
   };
 
   const removeFromCart = (productId) => {
-    setItems(prevItems => prevItems.filter(item => item.id !== productId));
+    setItems((prevItems) => prevItems.filter((item) => item.id !== productId));
   };
 
   const updateQuantity = (productId, quantity) => {
@@ -38,9 +41,9 @@ export const CartProvider = ({ children }) => {
       removeFromCart(productId);
       return;
     }
-    
-    setItems(prevItems =>
-      prevItems.map(item =>
+
+    setItems((prevItems) =>
+      prevItems.map((item) =>
         item.id === productId ? { ...item, quantity } : item
       )
     );
@@ -55,7 +58,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const getTotalPrice = () => {
-    return items.reduce((total, item) => total + (item.price * item.quantity), 0);
+    return items.reduce((total, item) => total + item.price * item.quantity, 0);
   };
 
   const value = {
@@ -64,13 +67,11 @@ export const CartProvider = ({ children }) => {
     removeFromCart,
     updateQuantity,
     clearCart,
+    isOpen, // ✅ popup open state
+    setIsOpen,
     getTotalItems,
     getTotalPrice,
   };
 
-  return (
-    <CartContext.Provider value={value}>
-      {children}
-    </CartContext.Provider>
-  );
-}; 
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
+};

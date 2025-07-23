@@ -32,27 +32,48 @@ import {
 import Invoice from "../../Components/Product/Invoice";
 
 const FloatingCart = () => {
-  const { items, totalPrice, clearCart } = useCart();
-  const [showInvoiceModal, setShowInvoiceModal] = useState(false);
+  const { items, getTotalItems, getTotalPrice, updateQuantity, removeFromCart, clearCart } = useCart();
+  const [isOpen, setIsOpen] = useState(false);
+  const [showInvoice, setShowInvoice] = useState(false);
   const [customerInfo, setCustomerInfo] = useState({
     name: "",
     phone: "",
-    address: "",
+    address: ""
   });
-  const { addOrder, invoice } = useOrders();
+  const { toast } = useToast();
+  const { generateInvoice, printInvoice, currentInvoice, clearCurrentInvoice } = useInvoice();
+  const { addOrder } = useOrders();
+
+  const totalItems = getTotalItems();
+  const totalPrice = getTotalPrice();
 
   const handlePlaceOrder = () => {
-    if (!customerInfo.name || !customerInfo.phone || !customerInfo.address) {
-      alert("Please fill out all customer details.");
+    if (items.length === 0) {
+      toast({
+        title: "Cart is empty",
+        description: "Please add some products to your cart first.",
+        variant: "destructive",
+      });
       return;
     }
+
+    if (!customerInfo.name || !customerInfo.phone) {
+      toast({
+        title: "Missing information",
+        description: "Please fill in your name and phone number.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    const invoice = generateInvoice(items, customerInfo);
 
     const orderData = {
       orderNumber: `ORD-${Date.now()}`,
       date: new Date().toLocaleDateString("en-US", {
         day: "2-digit",
         month: "short",
-        year: "numeric",
+        year: "numeric"
       }),
       customer: customerInfo,
       items: items,
@@ -65,64 +86,74 @@ const FloatingCart = () => {
 
     addOrder(orderData);
 
-    const message = `🧾 *Invoice* 📦\n\n*Invoice No:* ${
-      invoice.invoiceNumber
-    }\n*Date:* ${orderData.date}\n\n👤 *Customer Info*\nName: ${
-      customerInfo.name
-    }\nPhone: ${customerInfo.phone}\nAddress: ${
-      customerInfo.address
-    }\n\n🛍️ *Items:*\n${items
-      .map(
-        (item) =>
-          `- ${item.title} x${item.quantity} = ₹${item.price * item.quantity}`
-      )
-      .join("\n")}\n\n💰 *Total:* ₹${totalPrice}`;
+    const orderDetails = items.map(item =>
+      `• ${item.title} (Qty: ${item.quantity}) - $${(item.price * item.quantity).toFixed(2)}`
+    ).join('\n');
 
-    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, "_blank");
+    const message = `🛒 *New Order from ShopStore*
 
+👤 *Customer Details:*
+Name: ${customerInfo.name}
+Phone: ${customerInfo.phone}
+${customerInfo.address ? `Address: ${customerInfo.address}` : ''}
+
+📦 *Order Items:*
+${orderDetails}
+
+💰 *Total Amount: $${totalPrice.toFixed(2)}*
+📄 *Invoice #: ${invoice.invoiceNumber}*
+
+Thank you for your order!`;
+
+    const whatsappNumber = "1234567890"; // Replace with your WhatsApp business number
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappUrl, '_blank');
+
+    setShowInvoice(true);
     clearCart();
-    setShowInvoiceModal(false);
+    setIsOpen(false);
+    setCustomerInfo({ name: "", phone: "", address: "" });
+
+    toast({
+      title: "Order placed!",
+      description: "Your order has been sent via WhatsApp. Check your invoice!",
+    });
   };
+
+  const handleCloseInvoice = () => {
+    setShowInvoice(false);
+    clearCurrentInvoice();
+  };
+
+  if (totalItems === 0 && !isOpen) {
+    return null;
+  }
 
   return (
     <>
-      {/* Floating Cart Button */}
       <div className="fixed bottom-6 right-6 z-50">
         <Button
           size="lg"
           onClick={() => setIsOpen(true)}
-          className="h-14 w-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 relative"
+          className="bg-green-500 h-14 w-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 relative"
         >
-          <ShoppingCart className="h-6 w-6" />
+          <ShoppingCart className="h-6 w-6 " />
           {totalItems > 0 && (
-            <Badge className="absolute -top-2 -right-2 h-6 w-6 rounded-full p-0 text-xs">
+            <Badge className="absolute -top-2 -right-2 h-6 w-6 rounded-full p-0 text-md font-bold">
               {totalItems > 99 ? "99+" : totalItems}
             </Badge>
           )}
         </Button>
       </div>
 
-      {/* Cart Overlay */}
       {isOpen && (
-        <div
-          className="fixed inset-0 z-50 bg-black/50"
-          onClick={() => setIsOpen(false)}
-        >
-          <div
-            className="fixed right-0 top-0 h-full w-full max-w-md bg-background"
-            onClick={(e) => e.stopPropagation()}
-          >
+        <div className="fixed inset-0 z-50 bg-black/10" onClick={() => setIsOpen(false)}>
+          <div className="fixed right-0 top-0 h-full w-full max-w-md bg-white" onClick={(e) => e.stopPropagation()}>
             <Card className="h-full rounded-none border-0">
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-xl font-bold">
-                  Shopping Cart
-                </CardTitle>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={() => setIsOpen(false)}
-                >
+                <CardTitle className="text-xl font-bold">Shopping Cart</CardTitle>
+                <Button variant="ghost" size="icon" onClick={() => setIsOpen(false)}>
                   <X className="h-4 w-4" />
                 </Button>
               </CardHeader>
@@ -132,54 +163,38 @@ const FloatingCart = () => {
                   <div className="flex-1 flex items-center justify-center">
                     <div className="text-center">
                       <ShoppingCart className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
-                      <p className="text-muted-foreground">
-                        Your cart is empty
-                      </p>
+                      <p className="text-muted-foreground">Your cart is empty</p>
                     </div>
                   </div>
                 ) : (
                   <>
-                    {/* Cart Items */}
                     <ScrollArea className="flex-1">
                       <div className="space-y-4">
                         {items.map((item) => (
-                          <div
-                            key={item.id}
-                            className="flex gap-3 p-3 border rounded-lg"
-                          >
+                          <div key={item.id} className="flex gap-3 p-3 border rounded-lg">
                             <img
                               src={item.image}
                               alt={item.title}
                               className="w-16 h-16 object-cover rounded-md"
                             />
                             <div className="flex-1 space-y-1">
-                              <h4 className="text-sm font-medium line-clamp-2">
-                                {item.title}
-                              </h4>
-                              <p className="text-sm text-primary font-semibold">
-                                ${item.price}
-                              </p>
+                              <h4 className="text-sm font-medium line-clamp-2">{item.title}</h4>
+                              <p className="text-sm text-primary font-semibold">${item.price}</p>
                               <div className="flex items-center gap-2">
                                 <Button
                                   variant="outline"
                                   size="icon"
                                   className="h-6 w-6"
-                                  onClick={() =>
-                                    updateQuantity(item.id, item.quantity - 1)
-                                  }
+                                  onClick={() => updateQuantity(item.id, item.quantity - 1)}
                                 >
                                   <Minus className="h-3 w-3" />
                                 </Button>
-                                <span className="text-sm w-8 text-center">
-                                  {item.quantity}
-                                </span>
+                                <span className="text-sm w-8 text-center">{item.quantity}</span>
                                 <Button
                                   variant="outline"
                                   size="icon"
                                   className="h-6 w-6"
-                                  onClick={() =>
-                                    updateQuantity(item.id, item.quantity + 1)
-                                  }
+                                  onClick={() => updateQuantity(item.id, item.quantity + 1)}
                                 >
                                   <Plus className="h-3 w-3" />
                                 </Button>
@@ -199,7 +214,6 @@ const FloatingCart = () => {
                     </ScrollArea>
 
                     <div className="space-y-4 pt-4 border-t">
-                      {/* Customer Information */}
                       <div className="space-y-3">
                         <h3 className="font-semibold">Customer Information</h3>
                         <div className="space-y-2">
@@ -208,12 +222,7 @@ const FloatingCart = () => {
                             <Input
                               id="name"
                               value={customerInfo.name}
-                              onChange={(e) =>
-                                setCustomerInfo((prev) => ({
-                                  ...prev,
-                                  name: e.target.value,
-                                }))
-                              }
+                              onChange={(e) => setCustomerInfo(prev => ({ ...prev, name: e.target.value }))}
                               placeholder="Your full name"
                             />
                           </div>
@@ -222,12 +231,7 @@ const FloatingCart = () => {
                             <Input
                               id="phone"
                               value={customerInfo.phone}
-                              onChange={(e) =>
-                                setCustomerInfo((prev) => ({
-                                  ...prev,
-                                  phone: e.target.value,
-                                }))
-                              }
+                              onChange={(e) => setCustomerInfo(prev => ({ ...prev, phone: e.target.value }))}
                               placeholder="Your phone number"
                             />
                           </div>
@@ -236,12 +240,7 @@ const FloatingCart = () => {
                             <Input
                               id="address"
                               value={customerInfo.address}
-                              onChange={(e) =>
-                                setCustomerInfo((prev) => ({
-                                  ...prev,
-                                  address: e.target.value,
-                                }))
-                              }
+                              onChange={(e) => setCustomerInfo(prev => ({ ...prev, address: e.target.value }))}
                               placeholder="Your delivery address"
                             />
                           </div>
@@ -250,19 +249,13 @@ const FloatingCart = () => {
 
                       <Separator />
 
-                      {/* Total */}
                       <div className="flex justify-between items-center text-lg font-semibold">
                         <span>Total:</span>
                         <span>${totalPrice.toFixed(2)}</span>
                       </div>
 
-                      {/* Place Order Button */}
-                      <Button
-                        className="w-full"
-                        size="lg"
-                        onClick={handlePlaceOrder}
-                      >
-                        <MessageCircle className="h-4 w-4 mr-2" />
+                      <Button className="w-full bg-green-500" size="lg" onClick={handlePlaceOrder}>
+                        <MessageCircle className="h-4 w-4 mr-2 " />
                         Place Order via WhatsApp
                       </Button>
                     </div>
@@ -274,7 +267,6 @@ const FloatingCart = () => {
         </div>
       )}
 
-      {/* Invoice Dialog */}
       <Dialog open={showInvoice} onOpenChange={handleCloseInvoice}>
         <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
@@ -284,7 +276,10 @@ const FloatingCart = () => {
             </DialogTitle>
           </DialogHeader>
           {currentInvoice && (
-            <Invoice data={currentInvoice} onPrint={printInvoice} />
+            <Invoice
+              data={currentInvoice}
+              onPrint={printInvoice}
+            />
           )}
         </DialogContent>
       </Dialog>
