@@ -136,9 +136,10 @@ Thank you for your order!`;
         <Button
           size="lg"
           onClick={() => setIsOpen(true)}
-          className="bg-green-500 h-14 w-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 relative"
+          className="bg-green-800 h-14 w-14 rounded-full shadow-lg hover:shadow-xl 
+          transition-all duration-300 relative"
         >
-          <ShoppingCart className="h-6 w-6 " />
+          <ShoppingCart className="h-6 w-6 text-white font-bold" />
           {totalItems > 0 && (
             <Badge className="absolute -top-2 -right-2 h-6 w-6 rounded-full p-0 text-md font-bold">
               {totalItems > 99 ? "99+" : totalItems}
@@ -254,7 +255,7 @@ Thank you for your order!`;
                         <span>${totalPrice.toFixed(2)}</span>
                       </div>
 
-                      <Button className="w-full bg-green-500" size="lg" onClick={handlePlaceOrder}>
+                      <Button className="w-full bg-green-500 text-white cursor-pointer" size="lg" onClick={handlePlaceOrder}>
                         <MessageCircle className="h-4 w-4 mr-2 " />
                         Place Order via WhatsApp
                       </Button>

@@ -6,8 +6,16 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import Logo from "../../assets/HomeImg/Logo.png";
 import { Search } from "lucide-react";
 import Marquee from "react-fast-marquee";
+import LogIn from "../../AdminLogin/LogIn";
+import { useNavigate } from "react-router-dom";
 
 const TopHeader = () => {
+  const navigate = useNavigate();
+
+  const handleLoginClick = () => {
+    navigate("/login");
+  };
+
   return (
     <div className="w-full font-family">
       {/* Top banner */}
@@ -56,6 +64,9 @@ const TopHeader = () => {
           <IoMdHeartEmpty className="text-2xl cursor-pointer text-gray-700" />
           <AiOutlineShoppingCart className="text-2xl cursor-pointer text-gray-700" />
           <FaRegUser className="text-2xl cursor-pointer text-gray-700" />
+          <button onClick={handleLoginClick}
+        className="bg-blue-600 text-white px-4 py-2 rounded"
+        > LogIn</button>
         </div>
       </div>
     </div>

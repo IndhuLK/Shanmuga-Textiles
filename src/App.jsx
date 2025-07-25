@@ -47,6 +47,7 @@ import ProductPage from "./Components/Product/ProductPage";
 import { SliderProvider } from "./contexts/SliderContext";
 import { CartProvider } from "./contexts/CartContext";
 import { OrderProvider } from "./contexts/OrderContext";
+import LogIn from "./AdminLogin/LogIn";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -120,6 +121,7 @@ function App() {
               <Route path="/contact" element={<Contact />} />
               <Route path="/dashboard" element={<DashBoard />} />
               <Route path="/products" element={<ProductPage />} />
+              <Route path="/login" element={<LogIn />} />
             </Routes>
             <Footer />
           </Router>

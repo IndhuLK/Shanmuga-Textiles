@@ -175,7 +175,7 @@ const ProductPage = () => {
           <div className="flex flex-col sm:flex-row gap-3">
             <Button
               className=" mt-3 flex items-center justify-center px-4 py-4 text-sm 
-          font-medium text-white bg-green-600 hover:bg-green-700 rounded"
+          font-medium text-white bg-green-800 hover:bg-green-700 rounded cursor-pointer"
               onClick={handleAdd}
             >
               <ShoppingCart className="w-4 h-4 mr-2" />
@@ -183,7 +183,7 @@ const ProductPage = () => {
             </Button>
             <button
               className=" mt-3 flex items-center justify-center px-4 py-3 text-sm 
-          font-medium text-white bg-green-600 hover:bg-green-700 rounded"
+          font-medium text-white bg-green-800 hover:bg-green-700 rounded cursor-pointer"
             >
               BUY IT NOW
             </button>
@@ -425,7 +425,7 @@ const ProductPage = () => {
 
           <button
             onClick={() => setShowFormReview(!showForm)}
-            className="bg-green-900 text-white px-5 py-2 font-semibold rounded hover:bg-green-800"
+            className="bg-green-900 cursor-pointer text-white px-5 py-2 font-semibold rounded hover:bg-green-800"
           >
             {showForm ? "Cancel review" : "Write a review"}
           </button>
